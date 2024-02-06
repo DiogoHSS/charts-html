@@ -1,0 +1,230 @@
+:root {
+    --size-none: 0;
+    --size-small: 0.5em;
+    --size-medium: 1em;
+    --size-large: 2em;
+    --font-size-small: 0.8em;
+    --font-size-medium: 1em;
+    --font-size-large: 1.5em;
+    --font-size-title: 3.25em;
+    --border-size-small: 1px;
+    --border-size-medium: 1.5px;
+    --border-size-large: 2px;
+    --color-border: #a580a5;
+    --color-primary: #c5adc5;
+    --color-secondary: #e7e8f5;
+}
+
+html,
+body {
+    margin: var(--size-none);
+    /* height: 100%; */
+}
+
+.margin_none {
+    margin: var(--size-none);
+}
+
+.margin_small {
+    margin: var(--size-small);
+}
+
+.margin_medium {
+    margin: var(--size-medium);
+}
+
+.margin_large {
+    margin: var(--size-large);
+}
+
+.margin-h_none {
+    margin-left: var(--size-none);
+    margin-right: var(--size-none);
+}
+
+.margin-h_small {
+    margin-left: var(--size-small);
+    margin-right: var(--size-small);
+}
+
+.margin-h_medium {
+    margin-left: var(--size-medium);
+    margin-right: var(--size-medium);
+}
+
+.margin-h_large {
+    margin-left: var(--size-large);
+    margin-right: var(--size-large);
+}
+
+.margin-v_none {
+    margin-top: var(--size-none);
+    margin-bottom: var(--size-none);
+}
+
+.margin-v_small {
+    margin-top: var(--size-small);
+    margin-bottom: var(--size-small);
+}
+
+.margin-v_medium {
+    margin-top: var(--size-medium);
+    margin-bottom: var(--size-medium);
+}
+
+.margin-v_large {
+    margin-top: var(--size-large);
+    margin-bottom: var(--size-large);
+}
+
+.padding_none {
+    padding: var(--size-none);
+}
+
+.padding_small {
+    padding: var(--size-small);
+}
+
+.padding_medium {
+    padding: var(--size-medium);
+}
+
+.padding_large {
+    padding: var(--size-large);
+}
+
+.padding-h_none {
+    padding-left: var(--size-none);
+    padding-right: var(--size-none);
+}
+
+.padding-h_small {
+    padding-left: var(--size-small);
+    padding-right: var(--size-small);
+}
+
+.padding-h_medium {
+    padding-left: var(--size-medium);
+    padding-right: var(--size-medium);
+}
+
+.padding-h_large {
+    padding-left: var(--size-large);
+    padding-right: var(--size-large);
+}
+
+.padding-v_none {
+    padding-top: var(--size-none);
+    padding-bottom: var(--size-none);
+}
+
+.padding-v_small {
+    padding-top: var(--size-small);
+    padding-bottom: var(--size-small);
+}
+
+.padding-v_medium {
+    padding-top: var(--size-medium);
+    padding-bottom: var(--size-medium);
+}
+
+.padding-v_large {
+    padding-top: var(--size-large);
+    padding-bottom: var(--size-large);
+}
+
+.border_none {
+    border: none;
+}
+
+.viewport {
+    display: flex;
+    flex-direction: column;
+    margin: var(--size-none);
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    background-color: var(--color-primary);
+    padding: var(--size-small);
+    border-bottom: var(--border-size-medium) solid var(--color-border);
+}
+
+.header_title {
+    font-size: var(--font-size-title);
+    padding: var(--size-small);
+}
+
+.body {
+    display: flex;
+    background-color: var(--color-secondary);
+    padding: var(--size-small);
+    height: 100%;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.component_container {
+    width: 100%;
+    height: 0px;
+    border: none;
+}
+
+.component_title {
+    font-size: var(--font-size-large);
+    padding: var(--size-small);
+}
+
+.colSize_1-2 {
+    width: 50%;
+}
+
+.pie-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: transparent;
+    outline: 80px solid var(--color-secondary);
+}
+
+.pie-slice {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.slice-content {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+
+.tooltip {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 1.5em;
+    visibility: hidden;
+}
+
+.slice:hover .tooltip {
+    visibility: visible;
+}
+
+* {
+    box-sizing: border-box;
+}

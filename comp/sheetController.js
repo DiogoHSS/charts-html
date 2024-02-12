@@ -39,9 +39,6 @@ function initializeSheet() {
         { label: "d", value: 5 },
         { label: "e", value: 40 }
     ];
-    const tableBody = document
-        .getElementById("data-table")
-        .getElementsByTagName("tbody")[0];
 
     for (const data of initialRows) {
         addNewRow(null, data.label, data.value);

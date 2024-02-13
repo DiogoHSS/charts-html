@@ -1,4 +1,4 @@
-const resize = function () {
+window.resize = function () {
     const totalHeight = window.innerHeight;
     const headerHeight =
         document.getElementById("header-container").offsetHeight;
@@ -10,5 +10,5 @@ const resize = function () {
 
 // Component initialization
 (function () {
-    resize();
+    window.resize();
 })();

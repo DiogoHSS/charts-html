@@ -8,7 +8,8 @@ window.resize = function () {
     }px`;
 };
 
-// Component initialization
-(function () {
+const initialize = function () {
     window.resize();
-})();
+};
+
+document.addEventListener("DOMContentLoaded", initialize);

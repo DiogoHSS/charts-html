@@ -1,11 +1,14 @@
 :root {
     --size-none: 0;
+    --size-xxsmall: 0.25em;
+    --size-xsmall: 0.37em;
     --size-small: 0.5em;
     --size-medium: 1em;
     --size-large: 2em;
     --font-size-small: 0.8em;
     --font-size-medium: 1em;
-    --font-size-large: 1.5em;
+    --font-size-large: 1.25em;
+    --font-size-xlarge: 1.5em;
     --font-size-title: 3.25em;
     --border-size-small: 1px;
     --border-size-medium: 1.5px;
@@ -13,12 +16,13 @@
     --color-border: #a580a5;
     --color-primary: #c5adc5;
     --color-secondary: #e7e8f5;
+    --rowSize: 32px;
 }
 
 html,
 body {
     margin: var(--size-none);
-    /* height: 100%; */
+    font-family: monospace;
 }
 
 .margin_none {
@@ -179,12 +183,64 @@ body {
 }
 
 .component_title {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     padding: var(--size-small);
+    margin: var(--size-none);
 }
 
 .colSize_1-2 {
     width: 50%;
+}
+
+.table {
+    width: 30%;
+    border-collapse: collapse;
+}
+
+.table_title {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    padding: var(--size-small) 0 var(--size-small) 0;
+}
+
+.table_headerRow {
+    position: relative;
+    left: calc(var(--rowSize) / 2);
+}
+
+.table_headerCell {
+    font-size: var(--font-size-large);
+    vertical-align: bottom;
+}
+
+.table_row {
+    position: relative;
+    left: 16px;
+}
+
+.table_body .table_row:nth-child(even) {
+    background-color: var(--color-primary);
+}
+
+.table_cell {
+    height: var(--rowSize);
+    padding: var(--size-xxsmall);
+}
+
+.table_rowIconButton {
+    height: var(--rowSize);
+    width: var(--rowSize);
+    display: flex;
+    justify-content: center;
+}
+
+.editable {
+    font-size: var(--font-size-medium);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
 }
 
 .pie-container {

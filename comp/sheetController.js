@@ -1,37 +1,63 @@
-function addNewRow(event, label = undefined, value = undefined) {
-    const tableBody = document
-        .getElementById("data-table")
-        .getElementsByTagName("tbody")[0];
+window.resourceBundle = {
+    "en-US": {
+        label: "Label",
+        value: "Value"
+    },
+    "pt-BR": {
+        label: "Rótulo",
+        value: "Valor"
+    }
+};
+
+const localize = function (key, locale = "pt-BR") {
+    return window.resourceBundle[locale][key];
+};
+
+const fillLabels = function () {
+    const locale = navigator.language || "en-US";
+    const labels = document.querySelectorAll('[id*="localize-"]');
+
+    labels.forEach((label) => {
+        label.textContent = localize(label.id.split("-").pop(), locale);
+    });
+};
+
+const deleteRow = function (rowIndex) {
+    const tableBody = document.getElementById("table-body");
+    tableBody.deleteRow(rowIndex);
+    resize();
+};
+
+const addNewRow = function (label = "", value = "") {
+    const tableBody = document.getElementById("table-body");
     const newRow = tableBody.insertRow(tableBody.rows.length);
-    const cell1 = newRow.insertCell(0);
-    const cell2 = newRow.insertCell(1);
+    const rowLabel = newRow.insertCell(0);
+    const rowValue = newRow.insertCell(1);
     const deleteButton = document.createElement("button");
+    const deleteIcon = document.createElement("img");
 
-    if (label === undefined) {
-        cell1.innerHTML =
-            '<input type="text" class="editable" placeholder="Digite o rótulo" value="">';
-    } else {
-        cell1.innerHTML = `<input type="text" class="editable" value="${label}">`;
-    }
+    rowLabel.innerHTML = `<input type="text" class="editable" placeholder="Digite o rótulo" value="${label}">`;
+    rowLabel.className = "table_cell";
 
-    if (value === undefined) {
-        cell2.innerHTML =
-            '<input type="text" class="editable" placeholder="Digite o valor">';
-    } else {
-        cell2.innerHTML = `<input type="text" class="editable" value="${value}">`;
-    }
+    rowValue.innerHTML = `<input type="text" class="editable" placeholder="Digite o valor" value="${value}">`;
+    rowValue.className = "table_cell";
 
-    deleteButton.innerHTML = "Excluir";
-    deleteButton.onclick = function () {
-        tableBody.deleteRow(newRow.rowIndex - 1);
-        resizeContainer();
+    deleteIcon.src = "../img/trash.svg";
+    deleteIcon.alt = "Deletar";
+
+    deleteButton.appendChild(deleteIcon);
+    deleteButton.onclick = (event) => {
+        deleteRow(event.target.parentElement.parentElement.rowIndex - 1);
+        resize();
     };
+    deleteButton.className = "table_rowIconButton";
 
+    newRow.className = "table_row";
     newRow.appendChild(deleteButton);
-    resizeContainer();
-}
+    resize();
+};
 
-function initializeSheet() {
+const initializeSheet = function () {
     const initialRows = [
         { label: "a", value: 10 },
         { label: "b", value: 20 },
@@ -40,22 +66,28 @@ function initializeSheet() {
         { label: "e", value: 40 }
     ];
 
-    for (const data of initialRows) {
-        addNewRow(null, data.label, data.value);
-    }
-}
+    fillLabels();
 
-function resizeContainer() {
+    for (const data of initialRows) {
+        addNewRow(data.label, data.value);
+    }
+};
+
+const resize = function () {
     window.parent.document.getElementById(
         "comp-" + window.location.pathname.split("/").pop().split(".")[0]
     ).style.height =
-        document.getElementsByClassName("component")[0].offsetHeight + "px";
-}
+        document.getElementById("component-container").offsetHeight + "px";
 
-function initializeComponent() {
-    document.getElementById("add-row-btn").addEventListener("click", addNewRow);
+    window.parent.resize();
+};
+
+const initialize = function () {
+    document
+        .getElementById("add-row-btn")
+        .addEventListener("click", () => addNewRow());
     initializeSheet();
-    resizeContainer();
-}
+    resize();
+};
 
-document.addEventListener("DOMContentLoaded", initializeComponent);
+document.addEventListener("DOMContentLoaded", initialize);

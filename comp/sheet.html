@@ -10,20 +10,44 @@
             rel="stylesheet"
             href="../styles.css"
         />
+        <link
+            rel="shortcut icon"
+            href="../img/favicon.svg"
+            type="image/svg-xml"
+        />
+        <title>Sheet Component</title>
     </head>
-    <body>
-        <div class="component">
-            <h2 class="component_title">
+    <body id="body-tag">
+        <div
+            id="component-container"
+            class="component"
+        >
+            <h1 class="component_title">
                 <span>Preencha com seus valores</span>
-            </h2>
-            <table id="data-table">
+            </h1>
+            <table
+                id="data-table"
+                class="table"
+            >
+                <caption class="table_title">
+                    Planilha 1
+                </caption>
                 <thead>
-                    <tr>
-                        <th>Rótulo</th>
-                        <th>Valor</th>
+                    <tr class="table_headerRow">
+                        <th
+                            id="table_header_localize-label"
+                            class="table_headerCell"
+                        ></th>
+                        <th
+                            id="table_header_localize-value"
+                            class="table_headerCell"
+                        ></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody
+                    id="table-body"
+                    class="table_body"
+                ></tbody>
             </table>
             <button id="add-row-btn">Adicionar Nova Linha</button>
         </div>
